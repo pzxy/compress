@@ -10,9 +10,17 @@ func TestCompressImage(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	b, err = Do(b, 0, 100, 200, 10)
+	minKB := uint(100)
+	maxKB := uint(200)
+	b, err = CompressImage(b, 0, minKB, maxKB, 10)
 	if err != nil {
 		t.Fatal(err)
 	}
-	os.WriteFile("img2.jpg", b, 0644)
+	if len(b)/1024 < int(minKB) {
+		t.Fatal("compress failed")
+	}
+	if len(b)/1024 > int(maxKB) {
+		t.Fatal("compress failed")
+	}
+	os.WriteFile("img_compressed.jpg", b, 0644)
 }

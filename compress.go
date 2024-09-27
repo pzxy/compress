@@ -9,11 +9,11 @@ import (
 	"github.com/nfnt/resize"
 )
 
-// Do
+// CompressImage
 // With the minimum width minWidth as the primary constraint, the file size may exceed maxKB.
 // Secondly, within n iterations, perform a binary search for files sized between minKB and maxKB. If not found, return an error;
 // If found, return the file content; if found but the current image width is less than minWidth, use minWidth as the standard.
-func Do(content []byte, minWidth uint, minKB uint, maxKB uint, n int) ([]byte, error) {
+func CompressImage(content []byte, minWidth uint, minKB uint, maxKB uint, n int) ([]byte, error) {
 	if n <= 0 {
 		// By default, a maximum of 10 iterations is allowed to prevent infinite loops in case of unknown special conditions.		n = 10
 		n = 10
