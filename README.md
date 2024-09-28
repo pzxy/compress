@@ -14,9 +14,9 @@ go get github.com/pzxy/compress
     if err != nil {
         t.Fatal(err)
     }
-    b, err = Do(b, 0, 100, 200, 10)
+    b, err = compress.CompressImage(b, 0, 100, 200, 10)
     if err != nil {
         t.Fatal(err)
     }
-    os.WriteFile("img2.jpg", b, 0644)
+    _ = os.WriteFile("img2.jpg", b, 0644)
 ```
